@@ -65,11 +65,13 @@ _ACCUMULATOR_NUM_DOCUMENTS = "num_documents"
     "keras.layers.experimental.preprocessing.TextVectorization",
     v1=[])
 class TextVectorization(base_preprocessing_layer.PreprocessingLayer):
-  """Text vectorization layer.
+  """A preprocessing layer which maps text features to integer sequences.
 
-  This layer has basic options for managing text in a Keras model. It
-  transforms a batch of strings (one example = one string) into either a list of
-  token indices (one example = 1D tensor of integer token indices) or a dense
+  For an overview and full list of preprocessing layers, see the [guide]
+  (https://www.tensorflow.org/guide/keras/preprocessing_layers). The
+  TextVectorization layer has basic options for managing text in a Keras model.
+  It transforms a batch of strings (one example = one string) into either a list
+  of token indices (one example = 1D tensor of integer token indices) or a dense
   representation (one example = 1D tensor of float values representing data
   about the example's tokens).
 

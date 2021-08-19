@@ -27,9 +27,11 @@ from tensorflow.python.util.tf_export import keras_export
 @keras_export('keras.layers.Hashing',
               'keras.layers.experimental.preprocessing.Hashing')
 class Hashing(base_layer.Layer):
-  """Implements categorical feature hashing, also known as "hashing trick".
+  """A preprocessing layer which hashes and bins categorical features.
 
-  This layer transforms single or multiple categorical inputs to hashed output.
+  For an overview and full list of preprocessing layers, see the [guide]
+  (https://www.tensorflow.org/guide/keras/preprocessing_layers). The Hashing
+  layer transforms single or multiple categorical inputs to hashed output.
   It converts a sequence of int or string to a sequence of int. The stable hash
   function uses `tensorflow::ops::Fingerprint` to produce the same output
   consistently across all platforms.

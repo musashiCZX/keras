@@ -55,10 +55,12 @@ def check_fill_mode_and_interpolation(fill_mode, interpolation):
 @keras_export('keras.layers.Resizing',
               'keras.layers.experimental.preprocessing.Resizing')
 class Resizing(base_layer.Layer):
-  """Image resizing layer.
+  """A preprocessing layer which deterministically resizes images.
 
-  Resize the batched image input to target height and width. The input should
-  be a 4D (batched) or 3D (unbatched) tensor in `"channels_last"` format.
+  For an overview and full list of preprocessing layers, see the [guide]
+  (https://www.tensorflow.org/guide/keras/preprocessing_layers). The
+  Resizing layer resizes an image input to target height and width. The input
+  should be a 4D (batched) or 3D (unbatched) tensor in `"channels_last"` format.
 
   Args:
     height: Integer, the height of the output shape.
@@ -121,7 +123,12 @@ class Resizing(base_layer.Layer):
 @keras_export('keras.layers.CenterCrop',
               'keras.layers.experimental.preprocessing.CenterCrop')
 class CenterCrop(base_layer.Layer):
-  """Crop the central portion of the images to target height and width.
+  """A preprocessing layer which deterministically crops images.
+
+  For an overview and full list of preprocessing layers, see the [guide]
+  (https://www.tensorflow.org/guide/keras/preprocessing_layers). The
+  CenterCrop layers crops the central portion of the images to target height and
+  width.
 
   Input shape:
     3D (unbatched) or 4D (batched) tensor with shape:
@@ -194,9 +201,11 @@ class CenterCrop(base_layer.Layer):
 @keras_export('keras.layers.RandomCrop',
               'keras.layers.experimental.preprocessing.RandomCrop')
 class RandomCrop(base_layer.Layer):
-  """Randomly crop the images to target height and width.
+  """A preprocessing layer which randomly crops images during training.
 
-  This layer will crop all the images in the same batch to the same cropping
+  For an overview and full list of preprocessing layers, see the [guide]
+  (https://www.tensorflow.org/guide/keras/preprocessing_layers). The RandomCrop
+  layer will crop all the images in the same batch to the same cropping
   location.
   By default, random cropping is only applied during training. At inference
   time, the images will be first rescaled to preserve the shorter side, and
@@ -313,7 +322,12 @@ class RandomCrop(base_layer.Layer):
 @keras_export('keras.layers.Rescaling',
               'keras.layers.experimental.preprocessing.Rescaling')
 class Rescaling(base_layer.Layer):
-  """Multiply inputs by `scale` and adds `offset`.
+  """A preprocessing layer which rescales input values to a new range.
+
+  For an overview and full list of preprocessing layers, see the [guide]
+  (https://www.tensorflow.org/guide/keras/preprocessing_layers). The Rescaling
+  layer rescales every value of an input (often an image) by multiplying by
+  `scale` and adding `offset`.
 
   For instance:
 
@@ -368,11 +382,13 @@ HORIZONTAL_AND_VERTICAL = 'horizontal_and_vertical'
 @keras_export('keras.layers.RandomFlip',
               'keras.layers.experimental.preprocessing.RandomFlip')
 class RandomFlip(base_layer.Layer):
-  """Randomly flip each image horizontally and vertically.
+  """A preprocessing layer which randomly flips images during training.
 
-  This layer will flip the images based on the `mode` attribute.
-  During inference time, the output will be identical to input. Call the layer
-  with `training=True` to flip the input.
+  For an overview and full list of preprocessing layers, see the [guide]
+  (https://www.tensorflow.org/guide/keras/preprocessing_layers). The RandomFlip
+  layer will flip the images horizontally and or vertically based on the `mode`
+  attribute. During inference time, the output will be identical to input. Call
+  the layer with `training=True` to flip the input.
 
   Input shape:
     3D (unbatched) or 4D (batched) tensor with shape:
@@ -457,7 +473,12 @@ class RandomFlip(base_layer.Layer):
 @keras_export('keras.layers.RandomTranslation',
               'keras.layers.experimental.preprocessing.RandomTranslation')
 class RandomTranslation(base_layer.Layer):
-  """Randomly translate each image during training.
+  """A preprocessing layer which randomly translates images during training.
+
+  For an overview and full list of preprocessing layers, see the [guide]
+  (https://www.tensorflow.org/guide/keras/preprocessing_layers). The
+  RandomTranslation layer will apply random translations to each image during
+  training, filling empty space according to `fill_mode`.
 
   Args:
     height_factor: a float represented as fraction of value, or a tuple of size
@@ -778,7 +799,12 @@ def get_rotation_matrix(angles, image_height, image_width, name=None):
 @keras_export('keras.layers.RandomRotation',
               'keras.layers.experimental.preprocessing.RandomRotation')
 class RandomRotation(base_layer.Layer):
-  """Randomly rotate each image.
+  """A preprocessing layer which randomly rotates images during training.
+
+  For an overview and full list of preprocessing layers, see the [guide]
+  (https://www.tensorflow.org/guide/keras/preprocessing_layers). The
+  RandomRotation will apply random rotations to each image, filling empty space
+  according to `fill_mode`.
 
   By default, random rotations are only applied during training.
   At inference time, the layer does nothing. If you need to apply random
@@ -899,7 +925,12 @@ class RandomRotation(base_layer.Layer):
 @keras_export('keras.layers.RandomZoom',
               'keras.layers.experimental.preprocessing.RandomZoom')
 class RandomZoom(base_layer.Layer):
-  """Randomly zoom each image during training.
+  """A preprocessing layer which randomly zooms images during training.
+
+  For an overview and full list of preprocessing layers, see the [guide]
+  (https://www.tensorflow.org/guide/keras/preprocessing_layers). The
+  RandomRotation layer will randomly zoom in or out on each axis of an image
+  independently, filling empty space according to `fill_mode`.
 
   Args:
     height_factor: a float represented as fraction of value, or a tuple of size
@@ -1100,10 +1131,13 @@ def get_zoom_matrix(zooms, image_height, image_width, name=None):
 @keras_export('keras.layers.RandomContrast',
               'keras.layers.experimental.preprocessing.RandomContrast')
 class RandomContrast(base_layer.Layer):
-  """Adjust the contrast of an image or images by a random factor.
+  """A preprocessing layer which randomly adjusts contrast during training.
 
-  Contrast is adjusted independently for each channel of each image during
-  training.
+  For an overview and full list of preprocessing layers, see the [guide]
+  (https://www.tensorflow.org/guide/keras/preprocessing_layers). The
+  RandomContrast layer will randomly adjust the contrast of an image or images
+  by a random factor. Contrast is adjusted independently for each channel of
+  each image during training.
 
   For each channel, this layer computes the mean of the image pixels in the
   channel and then adjusts each component `x` of each pixel to
@@ -1175,11 +1209,13 @@ class RandomContrast(base_layer.Layer):
 @keras_export('keras.layers.RandomHeight',
               'keras.layers.experimental.preprocessing.RandomHeight')
 class RandomHeight(base_layer.Layer):
-  """Randomly vary the height of a batch of images during training.
+  """A preprocessing layer which randomly varies image height during training.
 
-  Adjusts the height of a batch of images by a random factor. The input
-  should be a 3D (unbatched) or 4D (batched) tensor in the `"channels_last"`
-  image data format.
+  For an overview and full list of preprocessing layers, see the [guide]
+  (https://www.tensorflow.org/guide/keras/preprocessing_layers). The
+  RandomHeight layer will randomly adjusts the height of a batch of images of a
+  batch of images by a random factor. The input should be a 3D (unbatched) or
+  4D (batched) tensor in the `"channels_last"` image data format.
 
   By default, this layer is inactive during inference.
 
@@ -1275,16 +1311,18 @@ class RandomHeight(base_layer.Layer):
 @keras_export('keras.layers.RandomWidth',
               'keras.layers.experimental.preprocessing.RandomWidth')
 class RandomWidth(base_layer.Layer):
-  """Randomly vary the width of a batch of images during training.
+  """A preprocessing layer which randomly varies image width during training.
 
-  Adjusts the width of a batch of images by a random factor. The input
-  should be a 3D (unbatched) or 4D (batched) tensor in the `"channels_last"`
-  image data format.
+  For an overview and full list of preprocessing layers, see the [guide]
+  (https://www.tensorflow.org/guide/keras/preprocessing_layers). The
+  RandomHeight layer will randomly adjusts the width of a batch of images of a
+  batch of images by a random factor. The input should be a 3D (unbatched) or
+  4D (batched) tensor in the `"channels_last"` image data format.
 
   By default, this layer is inactive during inference.
 
   Args:
-    factor: A positive float (fraction of original height), or a tuple of size 2
+    factor: A positive float (fraction of original width), or a tuple of size 2
       representing lower and upper bound for resizing vertically. When
       represented as a single float, this value is used for both the upper and
       lower bound. For instance, `factor=(0.2, 0.3)` results in an output with
@@ -1303,7 +1341,7 @@ class RandomWidth(base_layer.Layer):
 
   Output shape:
     3D (unbatched) or 4D (batched) tensor with shape:
-    `(..., random_height, width, channels)`.
+    `(..., height, random_width, channels)`.
   """
 
   def __init__(self,

@@ -28,9 +28,11 @@ from tensorflow.python.util.tf_export import keras_export
 @keras_export('keras.layers.Normalization',
               'keras.layers.experimental.preprocessing.Normalization')
 class Normalization(base_preprocessing_layer.PreprocessingLayer):
-  """Feature-wise normalization of the data.
+  """A preprocessing layer which normalizes continuous features.
 
-  This layer will coerce its inputs into a distribution centered around
+  For an overview and full list of preprocessing layers, see the [guide]
+  (https://www.tensorflow.org/guide/keras/preprocessing_layers). The
+  Normalization layer will coerce its inputs into a distribution centered around
   0 with standard deviation 1. It accomplishes this by precomputing the mean and
   variance of the data, and calling `(input - mean) / sqrt(var)` at runtime.
 

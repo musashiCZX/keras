@@ -28,10 +28,12 @@ from tensorflow.python.util.tf_export import keras_export
     "keras.layers.experimental.preprocessing.StringLookup",
     v1=[])
 class StringLookup(index_lookup.IndexLookup):
-  """Maps strings from a vocabulary to integer indices.
+  """A preprocessing layer which maps string features to integer indices.
 
-  This layer translates a set of arbitrary strings into an integer output via a
-  table-based vocabulary lookup.
+  For an overview and full list of preprocessing layers, see the [guide]
+  (https://www.tensorflow.org/guide/keras/preprocessing_layers). The
+  StringLookup layer translates a set of arbitrary strings into an integer
+  output via a table-based vocabulary lookup.
 
   The vocabulary for the layer must be either supplied on construction or
   learned via `adapt()`. During `adapt()`, the layer will analyze a data set,

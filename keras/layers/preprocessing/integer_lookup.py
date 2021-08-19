@@ -29,9 +29,11 @@ from tensorflow.python.util.tf_export import keras_export
     "keras.layers.experimental.preprocessing.IntegerLookup",
     v1=[])
 class IntegerLookup(index_lookup.IndexLookup):
-  """Reindex integer inputs to be in a contiguous range, via a dict lookup.
+  """A preprocessing layer which maps integer features to contiguous ranges.
 
-  This layer maps a set of arbitrary integer input tokens into indexed
+  For an overview and full list of preprocessing layers, see the [guide]
+  (https://www.tensorflow.org/guide/keras/preprocessing_layers). The
+  IntegerLookup layer maps a set of arbitrary integer input tokens into indexed
   integer output via a table-based vocabulary lookup. The layer's output indices
   will be contiguously arranged up to the maximum vocab size, even if the input
   tokens are non-continguous or unbounded. The layer supports multiple options
